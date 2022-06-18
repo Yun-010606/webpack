@@ -1,1 +1,1 @@
-export const tab = () => {console.log('实现了导航')}
+export const nav = () => {console.log('实现了导航')}
