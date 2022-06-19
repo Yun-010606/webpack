@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
 const path = require('path')
@@ -10,11 +11,18 @@ module.exports = {
         clean: true
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            attributes: {
+                id: "target",
+                "data-target": "example",
+              },
+        }),
         new HtmlWebpackPlugin({
             // 绝对路径
             template: path.join(__dirname, "public/index.html")
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        
     ],
     devServer: {
         port: 3000,
@@ -22,13 +30,17 @@ module.exports = {
     },
     module: {
         rules: [
+            // {
+            //     test:/\.css$/i,
+            //     use:["style-loader","css-loader"],
+            // },
             {
-                test: /\.css/i,
-                use: ["style-loader", "css-loader"]
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader,"css-loader"]
             },
             {
                 test: /\.less$/i,
-                use: ["style-loader", "css-loader", "less-loader"]
+                use: [MiniCssExtractPlugin.loader,"css-loader", "less-loader"]
             },
             {
                 test: /\.(gif|png|jpeg)$/i,

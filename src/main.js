@@ -2,8 +2,9 @@ import {marquee} from './marquee.js'
 import {nav} from './nav.js'
 marquee()
 nav()
-import './styles/index.css'
+// import './styles/index.css'
 import './styles/index.less'
+import './styles/index.css'
 import gifSrc from './assets/1.gif'
 import pngSrc from './assets/logo_small.png'
 
@@ -20,6 +21,7 @@ document.body.appendChild(gif)
 document.body.appendChild(png)
 
 import './assets/fonts/iconfont.css'
+import './styles/style.css'
 
 const fnn = () => {
     console.log('你好');
